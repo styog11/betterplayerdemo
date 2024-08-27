@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:better_player/better_player.dart';
+import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -56,8 +56,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  BetterPlayerController controller = BetterPlayerController(const BetterPlayerConfiguration(),betterPlayerDataSource: BetterPlayerDataSource(BetterPlayerDataSourceType.network,"https://video.xx.fbcdn.net/hvideo-prn-pnb/_nc_cat-107/_nc_sr_t-4/v/rASelt5S0o0SZa3KyuLAk85dKehDyNAJGbGkP15xI6Lq4Jg/_nc_ohc-OeUVcTLOlGkQ7kNvgEU-Aet/live-dash/dash-abr-ibr-audio/436520532746214.mpd?ccb=2-4&lvp=1&ms=m_CN&p_bd=M7MIyXqeCjXGSjRzzJt0&sc_t=1&oh=00_AYAhhEvkaiKWrAkCZkA1yXHh266dv_YmRAKpBsqO_tWFsw&oe=66CFE136") );
+  VlcPlayerController controller = VlcPlayerController.network("https://dash.akamaized.net/dash264/TestCasesUHD/2b/11/MultiRate.mpd");
+  AspectRatio ratio = const AspectRatio(aspectRatio: 720.0);
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            BetterPlayer(controller: controller)
+            VlcPlayer(controller: controller, aspectRatio: 16/9)
             ,
             const Text(
               'You have pushed the button this many times:',
